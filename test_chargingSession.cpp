@@ -15,7 +15,7 @@ void test_detectRanges_singleRange(){
 void test_detectRanges_moreThanOneRange(){
     std::map<std::string, int> expectedMap = { {"4-5", 2},
                                                {"7-9", 3}};
-    std::vector<int> ranges = {4,5,7,8,9,11};
+    std::vector<int> ranges = {4,5,7,8,9};
     assert(detectRanges(ranges) == expectedMap);
 }
 
