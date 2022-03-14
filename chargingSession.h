@@ -5,6 +5,7 @@
 #include<map>
 #include <vector>
 #include <string>
+#include <algorithm>
 
 std::map<std::string, int> detectRanges(std::vector<int> chargingRange);
 

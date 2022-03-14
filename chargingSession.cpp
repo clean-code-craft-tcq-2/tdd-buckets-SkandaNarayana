@@ -1,9 +1,8 @@
 #include "chargingSession.h"
 
-std::map<std::string, int> detectRanges(std::vector<int> chargingRange){
+std::map<std::string, int>
+getRangesMap(const std::vector<int> &chargingRange) {
     std::map<std::string, int> rangesCountMap = {};
-    if(chargingRange.size() == 0 || chargingRange.size() == 1)
-        return rangesCountMap;
     int startOfRange = chargingRange[0];
     int endOfRange = chargingRange[0];
     int rangeCount = 1;
@@ -24,4 +23,14 @@ std::map<std::string, int> detectRanges(std::vector<int> chargingRange){
     rangeOutput = std::to_string(startOfRange) + "-" + std::to_string(endOfRange);
     rangesCountMap.insert({rangeOutput, rangeCount} );
     return rangesCountMap;
+}
+
+
+std::map<std::string, int> detectRanges(std::vector<int> chargingRange){
+    if(chargingRange.size() == 0 || chargingRange.size() == 1)
+        return {};
+
+    std::sort(chargingRange.begin(), chargingRange.end());
+
+    return getRangesMap(chargingRange);
 }
