@@ -8,8 +8,8 @@ void test_detectRanges_emptyInput(){
 }
 
 void test_detectRanges_singleRange(){
-    std::map<std::string, int> expectedMap = { {"4-5", 2} };
-    std::vector<int> ranges = {4,5};
+    std::map<std::string, int> expectedMap = { {"4-5", 3} };
+    std::vector<int> ranges = {4,5,5};
     assert(detectRanges(ranges) == expectedMap);
 }
 
