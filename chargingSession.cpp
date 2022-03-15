@@ -8,11 +8,13 @@ getRangesMap(const std::vector<int> &chargingRange) {
     int rangeCount = 1;
     std::string rangeOutput;
     for(int index = 1; index < chargingRange.size(); index++){
-        if(chargingRange[index] - chargingRange[index - 1] == 1){
+
+        while(chargingRange[index] - chargingRange[index - 1] == 1 && index < chargingRange.size()){
             endOfRange = chargingRange[index];
             rangeCount++;
+            index++;
         }
-        else{
+        if( startOfRange != endOfRange){
             rangeOutput = std::to_string(startOfRange) + "-" + std::to_string(endOfRange);
             rangesCountMap.insert({rangeOutput, rangeCount} );
             rangeCount = 1;
@@ -20,8 +22,6 @@ getRangesMap(const std::vector<int> &chargingRange) {
             endOfRange = chargingRange[index];
         }
     }
-    rangeOutput = std::to_string(startOfRange) + "-" + std::to_string(endOfRange);
-    rangesCountMap.insert({rangeOutput, rangeCount} );
     return rangesCountMap;
 }
 

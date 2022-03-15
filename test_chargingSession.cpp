@@ -12,10 +12,11 @@ void test_detectRanges_singleRange(){
     std::vector<int> ranges = {4,5};
     assert(detectRanges(ranges) == expectedMap);
 }
+
 void test_detectRanges_moreThanOneRange(){
     std::map<std::string, int> expectedMap = { {"4-5", 2},
                                                {"7-9", 3}};
-    std::vector<int> ranges = {5,7,8,4,9};
+    std::vector<int> ranges = {5,7,8,4,9,11};
     assert(detectRanges(ranges) == expectedMap);
 }
 
