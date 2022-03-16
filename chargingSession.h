@@ -8,5 +8,6 @@
 #include <algorithm>
 
 std::map<std::string, int> detectRanges(std::vector<int> chargingRange);
+std::map<std::string, int> getRangesMap(const std::vector<int> &chargingRange);
 
 #endif //TDD_BUCKETS_SKANDANARAYANA_CHARGINGSESSION_H
