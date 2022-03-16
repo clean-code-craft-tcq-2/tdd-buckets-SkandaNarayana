@@ -21,17 +21,17 @@ void test_detectRanges_moreThanOneRange(){
 }
 
 void test_getRangesMap_unsorted(){
-    std::map<std::string, int> expectedMap = { {"4-5", 2},
+    std::map<std::string, int> expectedMapForUnsortedInput = { {"4-5", 2},
                                                {"7-9", 3}};
     std::vector<int> ranges = {5,7,8,4,9,11};
-    assert(getRangesMap(ranges) != expectedMap);
+    assert(getRangesMap(ranges) != expectedMapForUnsortedInput);
 }
 
 void test_getRangesMap_sorted(){
-    std::map<std::string, int> expectedMap = { {"4-5", 2},
+    std::map<std::string, int> expectedMapForSortedInput = { {"4-5", 2},
                                                {"7-9", 3}};
     std::vector<int> ranges = {4,5,7,8,9,11};
-    assert(getRangesMap(ranges) == expectedMap);
+    assert(getRangesMap(ranges) == expectedMapForSortedInput);
 }
 
 int main(){
