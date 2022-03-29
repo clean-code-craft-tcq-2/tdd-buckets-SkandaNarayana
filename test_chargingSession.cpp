@@ -34,10 +34,19 @@ void test_getRangesMap_sorted(){
     assert(getRangesMap(ranges) == expectedMapForSortedInput);
 }
 
+void test_convert12BitInputToAmps()
+{
+    std::map<std::string, int> expectedMapForSortedInput = { {"0-1", 5}};
+
+    std::vector<int> ranges = {0, 454, 556, 3444, 55, 342};
+    assert(detectRanges(ranges) == expectedMapForSortedInput);
+}
+
 int main(){
-    test_detectRanges_emptyInput();
-    test_detectRanges_singleRange();
-    test_detectRanges_moreThanOneRange();
-    test_getRangesMap_sorted();
-    test_getRangesMap_unsorted();
+//    test_detectRanges_emptyInput();
+//    test_detectRanges_singleRange();
+//    test_detectRanges_moreThanOneRange();
+//    test_getRangesMap_sorted();
+//    test_getRangesMap_unsorted();
+    test_convert12BitInputToAmps();
 }
