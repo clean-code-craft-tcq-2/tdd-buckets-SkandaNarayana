@@ -39,14 +39,6 @@ TEST_CASE("test_getRangesMap_sorted"){
     assert(getRangesMap(ranges) == expectedMapForSortedInput);
 }
 
-TEST_CASE("test_detectRanges_with12BitNumbers" )
-{
-    std::map<std::string, int> expectedMapForSortedInput = { {"0-1", 5}};
-
-    std::vector<int> ranges = {0, 454, 556, 3444, 55, 342};
-    assert(detectRanges(ranges) == expectedMapForSortedInput);
-}
-
 TEST_CASE("test_convert12BitInputToAmps")
 {
     std::vector<int> ranges = {0, 454, 556, 3444, 55, 342};

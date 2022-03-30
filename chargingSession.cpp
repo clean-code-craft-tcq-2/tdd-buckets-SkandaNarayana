@@ -38,8 +38,7 @@ std::vector<int> convert12BitInputToAmps(const std::vector<int>& chargingRange){
 std::map<std::string, int> detectRanges(std::vector<int> chargingRange){
     if(chargingRange.size() == 0 || chargingRange.size() == 1)
         return {};
-    std::vector<int> chargingRangeInAmps = convert12BitInputToAmps(chargingRange);
-    std::sort(chargingRangeInAmps.begin(), chargingRangeInAmps.end());
+    std::sort(chargingRange.begin(), chargingRange.end());
 
-    return getRangesMap(chargingRangeInAmps);
+    return getRangesMap(chargingRange);
 }
