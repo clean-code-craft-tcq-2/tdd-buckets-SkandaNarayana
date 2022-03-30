@@ -1,40 +1,45 @@
+#define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
 #include "chargingSession.h"
 #include <cassert>
+#include "test/catch.hpp"
 
-void test_detectRanges_emptyInput(){
+TEST_CASE("test_detectRanges_emptyInput")
+{
     std::map<std::string, int> expectedMap = {};
     std::vector<int> ranges = {};
     assert(detectRanges(ranges) == expectedMap);
 }
 
-void test_detectRanges_singleRange(){
+TEST_CASE("test_detectRanges_singleRange")
+{
     std::map<std::string, int> expectedMap = { {"4-5", 3} };
     std::vector<int> ranges = {4,5,5};
     assert(detectRanges(ranges) == expectedMap);
 }
 
-void test_detectRanges_moreThanOneRange(){
+TEST_CASE("test_detectRanges_moreThanOneRange")
+{
     std::map<std::string, int> expectedMap = { {"4-5", 2},
                                                {"7-9", 3}};
     std::vector<int> ranges = {5,7,8,4,9,11};
     assert(detectRanges(ranges) == expectedMap);
 }
 
-void test_getRangesMap_unsorted(){
+TEST_CASE("test_getRangesMap_unsorted"){
     std::map<std::string, int> expectedMapForUnsortedInput = { {"4-5", 2},
                                                {"7-9", 3}};
     std::vector<int> ranges = {5,7,8,4,9,11};
     assert(getRangesMap(ranges) != expectedMapForUnsortedInput);
 }
 
-void test_getRangesMap_sorted(){
+TEST_CASE("test_getRangesMap_sorted"){
     std::map<std::string, int> expectedMapForSortedInput = { {"4-5", 2},
                                                {"7-9", 3}};
     std::vector<int> ranges = {4,5,7,8,9,11};
     assert(getRangesMap(ranges) == expectedMapForSortedInput);
 }
 
-void test_convert12BitInputToAmps()
+TEST_CASE("test_detectRanges_with12BitNumbers" )
 {
     std::map<std::string, int> expectedMapForSortedInput = { {"0-1", 5}};
 
@@ -42,11 +47,9 @@ void test_convert12BitInputToAmps()
     assert(detectRanges(ranges) == expectedMapForSortedInput);
 }
 
-int main(){
-//    test_detectRanges_emptyInput();
-//    test_detectRanges_singleRange();
-//    test_detectRanges_moreThanOneRange();
-//    test_getRangesMap_sorted();
-//    test_getRangesMap_unsorted();
-    test_convert12BitInputToAmps();
+TEST_CASE("test_convert12BitInputToAmps")
+{
+    std::vector<int> ranges = {0, 454, 556, 3444, 55, 342};
+    std::vector<int> expectedOutput = {0, 1, 1, 8, 0, 0};
+    assert(convert12BitInputToAmps(ranges) == expectedOutput);
 }

@@ -7,6 +7,13 @@
 #include <string>
 #include <algorithm>
 
+
+typedef enum{
+    SENSOR_10_BIT,
+    SENSOR_12_BIT
+}SensorType;
+
+std::vector<int> convert12BitInputToAmps(const std::vector<int>& chargingRange);
 std::map<std::string, int> detectRanges(std::vector<int> chargingRange);
 std::map<std::string, int> getRangesMap(const std::vector<int> &chargingRange);
 
